@@ -1,0 +1,8 @@
+.p-popover {
+  max-width: 100%;
+  overflow: hidden;
+  &::before,
+  &::after {
+    display: none;
+  }
+}

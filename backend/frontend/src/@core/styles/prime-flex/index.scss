@@ -1,0 +1,47 @@
+:root {
+  --jinz-text-color-secondary: var(--jinz-surface-300);
+  --jinz-border-radius: 6px;
+  --jinz-primary-color-text: var(--jinz-surface-0);
+  --jinz-surface-ground: var(--jinz-surface-100);
+  --jinz-surface-section: var(--jinz-surface-0);
+  --jinz-surface-card: var(--jinz-surface-0);
+  --jinz-surface-overlay: var(--jinz-surface-0);
+  --jinz-surface-border: var(--jinz-surface-300);
+  --jinz-surface-hover: var(--jinz-surface-200);
+  --jinz-bluegray-50: var(--jinz-slate-50);
+  --jinz-bluegray-100: var(--jinz-slate-100);
+  --jinz-bluegray-200: var(--jinz-slate-200);
+  --jinz-bluegray-300: var(--jinz-slate-300);
+  --jinz-bluegray-400: var(--jinz-slate-400);
+  --jinz-bluegray-500: var(--jinz-slate-500);
+  --jinz-bluegray-600: var(--jinz-slate-600);
+  --jinz-bluegray-700: var(--jinz-slate-700);
+  --jinz-bluegray-800: var(--jinz-slate-800);
+  --jinz-bluegray-900: var(--jinz-slate-900);
+}
+
+@import "./_variables";
+@import "./_mixins";
+@import "./_grid";
+@import "./_colors";
+@import "./_formlayout";
+@import "./_display";
+@import "./_typography";
+@import "./_flexbox";
+@import "./_gap";
+@import "./_spacing";
+@import "./_elevation";
+@import "./_border";
+@import "./_borderradius";
+@import "./_size";
+@import "./_position";
+@import "./_overflow";
+@import "./_zindex";
+@import "./_image";
+@import "./_userselect";
+@import "./_liststyle";
+@import "./_misc";
+@import "./_transition";
+@import "./_transform";
+@import "./_animation";
+@import "./_utils";

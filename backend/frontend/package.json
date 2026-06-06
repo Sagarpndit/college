@@ -1,0 +1,42 @@
+{
+    "name": "vyapaar",
+    "version": "4.32.356",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@ckeditor/ckeditor5-vue": "^7.3.0",
+        "@primevue/themes": "^4.3.1",
+        "@vee-validate/i18n": "^4.15.0",
+        "@vee-validate/rules": "^4.15.0",
+        "axios": "^1.8.2",
+        "axios-cancel": "^0.2.2",
+        "ckeditor5-build-classic-base64-upload": "^27.0.2",
+        "lodash": "^4.17.21",
+        "moment": "^2.30.1",
+        "moment-timezone": "^0.5.47",
+        "pinia": "^3.0.1",
+        "primeicons": "^7.0.0",
+        "primevue": "^4.3.1",
+        "vee-validate": "^4.15.0",
+        "vue": "^3.5.13",
+        "vue-debounce": "^5.0.1",
+        "vue-router": "^4.5.0"
+    },
+    "devDependencies": {
+        "@primevue/auto-import-resolver": "^4.3.1",
+        "@rushstack/eslint-patch": "^1.10.5",
+        "@vitejs/plugin-vue": "^5.2.1",
+        "@vue/eslint-config-prettier": "^10.2.0",
+        "eslint": "^9.22.0",
+        "eslint-plugin-vue": "^10.0.0",
+        "prettier": "^3.5.3",
+        "sass": "^1.85.1",
+        "unplugin-vue-components": "^28.4.1",
+        "vite": "^6.2.1"
+    }
+}
