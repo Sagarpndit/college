@@ -23,16 +23,15 @@ const collegeSchema = new mongoose.Schema({
     // Basic Details
     collegeType: {
         type: String,
-        enum: ['Government', 'Private', 'Autonomous', 'Deemed'],
-        default: 'Private'
+        enum: ['government', 'private', 'autonomous', 'deemed'],
+        default: 'private'
     },
 
     establishedYear: Number,
 
     // Location
-    city: String,
-    district: String,
-    state: String,
+    cityId: String,
+    stateId: String,
 
     // Branding
     logo: String,
@@ -42,6 +41,7 @@ const collegeSchema = new mongoose.Schema({
     nirfRank: Number,
 
     content: Array,
+    image: Array,
     website: String,
 
     // Small summary for cards & SEO
@@ -60,7 +60,7 @@ const collegeSchema = new mongoose.Schema({
     // Status
     status: {
         type: Number,
-        default: 1
+        default: 0
     }
 
 }, {

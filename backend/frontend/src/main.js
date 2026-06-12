@@ -12,6 +12,7 @@ import MyPreset from '@core/plugins/primevue';
 import ToastService from 'primevue/toastservice';
 import DialogService from 'primevue/dialogservice';
 import ConfirmationService from 'primevue/confirmationservice';
+import { Chip } from 'primevue';
 import '@core/styles/index.scss';
 /* End PrimeVue Import  */
 import { CkeditorPlugin } from '@ckeditor/ckeditor5-vue';

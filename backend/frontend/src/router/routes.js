@@ -129,11 +129,31 @@ const corporate = [
                 }
             },
             {
-                path: 'items',
-                name: 'items',
-                component: () => import('@pages/corporate/items.vue'),
+                path: 'news/:id',
+                name: 'content',
+                component: () => import('@pages/corporate/content.vue'),
                 meta: {
-                    title: 'Items',
+                    title: 'Preview News',
+                    authRequired: true,
+                    module: ['news']
+                }
+            },
+            {
+                path: 'college',
+                name: 'college',
+                component: () => import('@pages/corporate/college.vue'),
+                meta: {
+                    title: 'College',
+                    authRequired: true,
+                    module: ['corporate-party']
+                }
+            },
+            {
+                path: 'college/:id',
+                name: 'content',
+                component: () => import('@pages/corporate/content.vue'),
+                meta: {
+                    title: 'College Preview',
                     authRequired: true,
                     module: ['corporate-party']
                 }

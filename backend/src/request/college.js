@@ -5,8 +5,8 @@ const create = async (req, res, next) => {
         name: 'required|string|max:255',
         slug: 'required|string|max:255',
         collegeType: 'required|string|max:100',
-        city: 'required|string|max:100',
-        state: 'required|string|max:100',
+        cityId: 'string|max:100',
+        stateId: 'string|max:100',
 
         shortName: 'string|max:50',
         establishedYear: 'numeric',
@@ -37,8 +37,8 @@ const update = async (req, res, next) => {
         name: 'required|string|max:255',
         slug: 'required|string|max:255',
         collegeType: 'required|string|max:100',
-        city: 'required|string|max:100',
-        state: 'required|string|max:100',
+        cityId: 'string|max:100',
+        stateId: 'string|max:100',
 
         shortName: 'string|max:50',
         establishedYear: 'numeric',

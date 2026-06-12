@@ -15,9 +15,11 @@ const storage = multer.diskStorage({
     }
 });
 
-const uploadFile = multer({
+const upload = multer({
     storage: storage
-}).fields([
+});
+
+const uploadFile = upload.fields([
     { name: 'zip', maxCount: 1 },
     { name: 'csv', maxCount: 1 },
     { name: 'docx', maxCount: 1 },
@@ -80,6 +82,7 @@ const checkFileValidation = (req, res, next) => {
 };
 
 module.exports = {
+    upload,
     uploadFile,
     setDestinationPath,
     deleteStorageFile,

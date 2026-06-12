@@ -3,8 +3,9 @@ import { isEmpty, isNull } from 'lodash';
 import { perPage } from '@utils/constant';
 import { HTTP, handleError } from '@plugins/axios';
 
-export const useItem = defineStore('items', {
+export const useCollege = defineStore('college', {
     state: () => ({
+        collegeId: null,
         list: [],
         singleItem: {},
         selectedRow: null,
@@ -16,61 +17,25 @@ export const useItem = defineStore('items', {
         formDialogType: null,
 
         formField: {
-
-            // ===== BASIC =====
-            corporateId: '',
             name: '',
-            // categoryId: '',
-            brand: '',
-            description: '',
-            size: '',
-            color: '',
-
-            // ===== TAX =====
-            hsnCode: '',
-            sacCode: '',
-            taxRate: 0,
-
-            // ===== PRICING =====
-            saleTaxType: 'with_tax',
-            salePrice: 0,
-
-            purchaseTaxType: 'without_tax',
-            costPrice: 0,
-
-            discount: 0,
-
-            // ===== STOCK =====
-            currentStock: 0,
-            minStockLevel: 5,
-            maxStockLevel: 100,
-            location: '',
-
-            // ===== OPENING =====
-            openingStock: 0,
-            openingStockPrice: 0,
-            openingStockDate: null,
-
-            // ===== SUPPLIER / BATCH =====
-            partyId: '',
-            partyName: '',
-            purchaseOrderId: '',
-
-            batchNumber: '',
-            supplierBatchNumber: '',
-            supplierCode: '',
-
-            dateReceived: null,
-            expiryDate: null,
-
-            qualityNotes: '',
-
-            supplierUnitPrice: 0,
-            supplierTotalCost: 0,
-
-            // ===== STATUS =====
-            isActive: true,
-            imagePath: ''
+            slug: '',
+            shortName: '',
+            collegeType: null,
+            establishedYear: '',
+            city: null,
+            district: '',
+            stateId: null,
+            logo: null,
+            bannerImage: '',
+            nirfRank: '',
+            content: [],
+            image: [],
+            website: '',
+            shortDescription: '',
+            seoTitle: '',
+            seoDescription: '',
+            seoKeywords: '',
+            status: 0,
         },
 
         filterField: {
@@ -95,7 +60,7 @@ export const useItem = defineStore('items', {
             const stockFilter = !isEmpty(this.filterField.currentStock) ? `&currentStock=${this.filterField.currentStock}` : '';
             const statusFilter = !isNull(this.filterField.isActive) ? `&isActive=${this.filterField.isActive}` : '';
 
-            const url = `items?page=${this.currentPage}&per_page=${this.perPage}${nameFilter}${brandFilter}${hsnFilter}${taxFilter}${stockFilter}${statusFilter}`;
+            const url = `college?page=${this.currentPage}&per_page=${this.perPage}${nameFilter}${brandFilter}${hsnFilter}${taxFilter}${stockFilter}${statusFilter}`;
 
             try {
                 const result = await HTTP.get(url);
@@ -109,21 +74,50 @@ export const useItem = defineStore('items', {
 
         // ===== GET BY ID =====
         async fetchById() {
-            const url = `items/${this.selectedRow.id}`;
-
+            const url = `college/${this.selectedRow._id}`;
+            console.log(url)
             try {
                 const response = await HTTP.get(url);
                 if (response.data.response) {
                     const data = response.data.data;
                     this.singleItem = data;
 
-                    this.formField = {
-                        ...this.formField,
-                        ...data
-                    };
-                    console.log(this.formField)
+                    this.formField.name = data.name;
+                    this.formField.slug = data.slug;
+                    this.formField.shortName = data.shortName;
+                    this.formField.collegeType = data.collegeType;
+                    this.formField.establishedYear = data.establishedYear;
+                    this.formField.city = data.city;
+                    this.formField.district = data.district;
+                    this.formField.stateId = data.stateId;
+                    this.formField.logo = data.logo;
+                    this.formField.bannerImage = data.bannerImage;
+                    this.formField.nirfRank = data.nirfRank;
+                    this.formField.content = data.content;
+                    this.formField.website = data.website;
+                    this.formField.shortDescription = data.shortDescription;
+                    this.formField.seoTitle = data.seoTitle;
+                    this.formField.seoDescription = data.seoDescription;
+                    this.formField.seoKeywords = data.seoKeywords;
+                    this.formField.status = data.status;
                 }
 
+            } catch (error) {
+                return handleError(error);
+            }
+        },
+
+        async fetchPreview() {
+            const listUrl = `college/${this.collegeId}`;
+            try {
+                console.log(listUrl);
+                const response = await HTTP.get(listUrl);
+                if (response.data.response) {
+                    const data = response.data.data;
+                    this.singleItem = data;
+                } else {
+                    return response;
+                }
             } catch (error) {
                 return handleError(error);
             }
@@ -132,7 +126,7 @@ export const useItem = defineStore('items', {
         // ===== CREATE =====
         async fetchCreate() {
             try {
-                const result = await HTTP.post(`items`, this.formField);
+                const result = await HTTP.post(`college`, this.formField);
                 return result;
             } catch (error) {
                 return handleError(error);
@@ -143,7 +137,7 @@ export const useItem = defineStore('items', {
         async fetchUpdate() {
             try {
                 const result = await HTTP.patch(
-                    `items/${this.selectedRow.id}`,
+                    `college/${this.selectedRow._id}`,
                     this.formField
                 );
                 return result;
@@ -155,7 +149,7 @@ export const useItem = defineStore('items', {
         // ===== STATUS =====
         async fetchStatus() {
             try {
-                const result = await HTTP.get(`items-status/${this.selectedRow.id}`);
+                const result = await HTTP.get(`college-status/${this.selectedRow._id}`);
                 return result;
             } catch (error) {
                 return handleError(error);
@@ -165,7 +159,7 @@ export const useItem = defineStore('items', {
         // ===== DELETE =====
         async fetchDelete() {
             try {
-                const result = await HTTP.delete(`items/${this.selectedRow.id}`);
+                const result = await HTTP.delete(`college/${this.selectedRow._id}`);
                 return result;
             } catch (error) {
                 return handleError(error);
@@ -176,7 +170,6 @@ export const useItem = defineStore('items', {
         filterReset() {
             this.filterField = {
                 name: '',
-                // categoryId: '',
                 brand: '',
                 hsnCode: '',
                 taxRate: '',
@@ -189,53 +182,26 @@ export const useItem = defineStore('items', {
         formReset() {
             this.formField = {
 
-                corporateId: '',
                 name: '',
-                // categoryId: '',
-                brand: '',
-                description: '',
-                size: '',
-                color: '',
+                slug: '',
+                shortName: '',
+                collegeType: null,
+                establishedYear: '',
+                city: null,
+                district: '',
+                state: '',
+                logo: 0,
+                bannerImage: '',
+                nirfRank: 0,
+                content: [],
+                image: [],
+                website: 0,
+                shortDescription: 0,
+                seoTitle: 0,
+                seoDescription: 5,
+                seoKeywords: 100,
+                status: '',
 
-                hsnCode: '',
-                sacCode: '',
-                taxRate: 0,
-
-                saleTaxType: 'with_tax',
-                salePrice: 0,
-
-                purchaseTaxType: 'without_tax',
-                costPrice: 0,
-
-                discount: 0,
-
-                currentStock: 0,
-                minStockLevel: 5,
-                maxStockLevel: 100,
-                location: '',
-
-                openingStock: 0,
-                openingStockPrice: 0,
-                openingStockDate: null,
-
-                partyId: '',
-                partyName: '',
-                purchaseOrderId: '',
-
-                batchNumber: '',
-                supplierBatchNumber: '',
-                supplierCode: '',
-
-                dateReceived: null,
-                expiryDate: null,
-
-                qualityNotes: '',
-
-                supplierUnitPrice: 0,
-                supplierTotalCost: 0,
-
-                isActive: true,
-                imagePath: ''
             };
         }
     }

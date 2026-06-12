@@ -55,7 +55,7 @@ const fetchPage = (pageLink) => {
 
           <li class="cursor-pointer">
             <div
-              @click="fetchPage('/corporate/party')"
+              @click="fetchPage('/corporate/college')"
               v-ripple
               class="py-3 px-4 flex items-center text-700 hover:bg-primary-50 duration-150 transition-colors p-ripple"
             >
@@ -85,17 +85,10 @@ const fetchPage = (pageLink) => {
           v-ripple
           class="flex align-items-center cursor-pointer p-3 gap-2 text-surface-700 hover:bg-surface-100 dark:text-surface-0 dark:hover:bg-surface-800 duration-150 transition-colors p-ripple"
         >
-          <Avatar
-            :image="
-              authStore.userProfile.profileImage
-                ? `${baseURL}/${authStore.userProfile.profileImage}`
-                : '/avatar/1.jpg'
-            "
-            shape="circle"
-          />
+          <Avatar :image="'/avatar/1.jpg'" shape="circle" />
           <div>
             <p class="mb-0 -mb-1 font-bold text-sm text-900">
-              {{ authStore.userProfile.name }}
+              {{ authStore.userProfile?.name }}
             </p>
             <b class="text-xs text-600">
               {{ "Admin" }}
