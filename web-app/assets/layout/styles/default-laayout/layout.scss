@@ -1,0 +1,111 @@
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+// Global
+
+.gradient-bg {
+    background: var(--primary-gradient);
+}
+
+.surface-ground {
+    background: var(--surface-ground);
+}
+
+.text-secondary {
+    color: var(--secondary-color);
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.own-teacher-html > figure > img,
+.own-teacher-html > img {
+    width: auto;
+}
+
+.border-secondary {
+    border: 2px solid var(--secondary-color);
+}
+
+.max-4-line {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+// Auth Page
+.aurth-column-wrapper {
+    position: relative;
+}
+
+.aurth-column-wrapper-image {
+    width: 100%;
+    height: calc(100vh - 24px);
+    border-radius: 20px;
+}
+
+.login-side-image-opacity {
+    position: absolute;
+    background: var(--primary-gradient);
+    width: 100%;
+    height: calc(100vh - 24px);
+    border-radius: 20px;
+    top: 0;
+    opacity: 0.6;
+}
+
+.login-side-image-content {
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    width: 100%;
+    padding: 30px;
+    height: calc(100vh - 24px);
+}
+
+.aurth-column-height {
+    height: calc(100vh - 39px);
+}
